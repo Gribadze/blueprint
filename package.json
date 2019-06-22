@@ -1,0 +1,45 @@
+{
+  "name": "blueprint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "prettier": "prettier --write ./",
+    "lint": "eslint ./ --fix"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.12",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jest": "^22.5.1",
+    "husky": "^2.3.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "npm run prettier",
+      "npm run lint",
+      "npm test",
+      "git add"
+    ],
+    "./*.js": [
+      "npm run prettier",
+      "git add"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}
